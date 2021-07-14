@@ -12,6 +12,7 @@
     <h2 class="text-center mb-5">Editar Receta: {{$receta->titulo}}</h2>
     {{$receta}}
    {{$receta}}
+   {{$receta}}
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
