@@ -23,12 +23,24 @@
                     <td>{{$receta->titulo}}</td>
                     <td>{{$receta->categoria->nombre}}</td>
                     <td>
-                        <a href="" class="btn btn-danger mr-1">Elminar</a>
-                        <a href="{{route('recetas.edit',['receta'=> $receta->id])}}" class="btn btn-dark mr-1">Editar</a>
+                        {{-- Una forma de eliminar --}}
+                        {{-- <form action="{{route('recetas.destroy',['receta' => $receta->id])}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <input type="submit" class="btn btn-danger mr-1 d-block w-100 mb-2" value="Eliminar &times;">
+                        </form> --}}
+
+                        <eliminar-receta receta-id={{$receta->id}}>
+                            
+                        </eliminar-receta>
+
+
+                        <a href="{{route('recetas.edit',['receta'=> $receta->id])}}" class="btn btn-dark d-block mb-2">Editar</a>
                         {{-- una forma de direccionar --}}
                         {{-- <a href="{{action('RecetaController@show',['receta'=> $receta->id])}}" class="btn btn-success mr-1">Ver</a> --}}
                         {{-- Otra forma de redireccionar --}}
-                        <a href="{{route('recetas.show',['receta'=> $receta->id])}}" class="btn btn-success mr-1">Ver</a>
+                        <a href="{{route('recetas.show',['receta'=> $receta->id])}}" class="btn btn-success d-block">Ver</a>
                     </td>
                 </tr>
                 @endforeach
