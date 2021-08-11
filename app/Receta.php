@@ -12,7 +12,7 @@ class Receta extends Model
         'titulo', 'preparacion', 'ingredientes','imagen','categoria_id'
     ];
     
-    
+     
     //Obtiene la categoria de la receta via FK
     public function categoria(){
 
@@ -24,4 +24,11 @@ class Receta extends Model
 
         return $this->belongsTo(User::class, 'user_id'); //user_id FK de la tabla USers
     }
+
+    // liKES WQUE HA RECIBIDO UNA RECETA
+    public function likes(){
+
+        return $this->belongsToMany(User::class,'likes_receta');
+    }
 }
+

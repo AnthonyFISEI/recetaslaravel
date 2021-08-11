@@ -24,7 +24,6 @@ class UsuarioSeeder extends Seeder
         ]);
         //
 
-        $user->perfil()->create();
 
         
         $user2 = User::create([
@@ -35,6 +34,5 @@ class UsuarioSeeder extends Seeder
         ]);
         //
 
-        $user2->perfil()->create();
     }
 }

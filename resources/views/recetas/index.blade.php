@@ -2,8 +2,10 @@
 
 
 @section('botones')
-    <a href="{{route('recetas.create')}}" class="btn btn-primary mr-2 text-white">Crear Receta</a>
+{{-- {{Auth::user()}} --}}
+   @include('ui.navegacion')
 @endsection
+
 @section('content')
     <h2 class="text-center mb-5">Administra tus recetas</h2>
     {{-- {{$recetas}} --}}
@@ -46,6 +48,29 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="col-12 mt-4 justify-content-center d-flex">
+        {{$recetas->links()}}
+        </div>
+        <h2 class="text-center my-5">Recetas que te gustan</h2>
+        <div class="col-md-10 mx-auto bg-white p-3">
+            @if(count($usuario->meGusta)>0)
+                
+            <ul>
+                @foreach($usuario->meGusta as $receta)
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <p> {{$receta->titulo}}</p> 
+                    <a class="btn btn-outline-success text-uppercase font-weight-bold" href="{{route('recetas.show',['receta' => $receta->id])}}">Ver</a>
+                    </li>
+                    
+                @endforeach
+          </ul>
+            @else
+            <p class="text-center">Aún no tienes recetas guardadas 
+            <small>Dale me gusta a las recetas y aparecerán aqui </small>
+            </p>
+            @endif
+        </div>
+ 
     </div>
 
 @endsection

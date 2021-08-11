@@ -30,8 +30,12 @@ Vue.use(VueSweetalert2);
 
 // Decirle A VUE que componentes no le pertenecen para evitar que marque errores
 Vue.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
+// Definir los componentes usados
 Vue.component('fecha-receta',require('./components/FechaReceta.vue').default);
 Vue.component('eliminar-receta',require('./components/EliminarReceta.vue').default);
+Vue.component('like-button',require('./components/LikeButton.vue').default);
+
+
 
 
 console.log(Vue.prototype);
@@ -44,3 +48,8 @@ console.log(Vue.prototype);
 const app = new Vue({
     el: '#app',
 });
+
+// ANimacion del corazon
+$('.like-btn').on('click', function() {
+    $(this).toggleClass('like-active');
+ });
