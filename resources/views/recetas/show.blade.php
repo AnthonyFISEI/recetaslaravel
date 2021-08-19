@@ -1,20 +1,23 @@
+
 @extends('layouts.app')
 
 
 @section('content')
     {{-- <h1>{{$receta}}</h1> --}}
 
-    <article class="contenido-receta">
+    <article class="contenido-receta bg-white p-5 shadow">
         <h1 class="text-center mb-4">{{$receta->titulo}}</h1>
 
         <div class="imagen-receta">
             <img src="/storage/{{$receta->imagen}}" alt="" class="w-100">
         </div>
 
-        <div class="receta-meta mt-2">
+        <div class="receta-meta mt-3">
             <p>
                 <span class="font-weight-bold text-primary">Escrito en:</span>
-                {{$receta->categoria->nombre}}
+                <a class="text-dark" href=" {{route('categorias.show',['categoriaReceta' => $receta->categoria->id]) }}">
+                    {{$receta->categoria->nombre}}
+                </a>               
             </p>
 
             <p>
@@ -32,7 +35,10 @@
             <p>
                 <span class="font-weight-bold text-primary">Autor:</span>
                 {{-- TODO: mostrar el usuario --}}
-                {{$receta->autor->name}}
+                <a class="text-dark" href=" {{route('perfiles.show',['perfil' => $receta->autor->id]) }}">
+                    {{$receta->autor->name}}
+                </a>  
+
             </p>
 
             <div class="ingredientes">

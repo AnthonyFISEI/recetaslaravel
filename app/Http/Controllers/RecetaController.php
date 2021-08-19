@@ -17,7 +17,7 @@ class RecetaController extends Controller
     public function __construct(){
         // Aqui le digo que para acceder a los metodos de este controlador el ususario debe estar autenticado
         // COn except le digo que metodo sera publico y no necesita autenticacion
-        $this->middleware('auth',['except' => 'show']);
+        $this->middleware('auth',['except' => ['show','search']]);
     }
     /**
      * Display a listing of the resource.
@@ -225,5 +225,19 @@ class RecetaController extends Controller
 
         $receta->delete();
         return redirect()->action('RecetaController@index');
+    }
+
+    public function search(Request $request){
+        
+        // Primera forma
+        // $busqueda = $request['buscar'];
+        // Segunda Forma que es practicamente lo mismo
+        $busqueda = $request->get('buscar');
+
+        $recetas = Receta::where('titulo','like','%' . $busqueda . '%')->paginate(10);
+        $recetas->appends(['buscar'=>$busqueda]);
+
+
+        return view('busquedas.show',compact('recetas','busqueda'));
     }
 }

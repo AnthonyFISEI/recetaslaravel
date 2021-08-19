@@ -5,6 +5,7 @@
  */
 
 // Agregar VueSweetalert2
+import 'owl.carousel';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -50,6 +51,31 @@ const app = new Vue({
 });
 
 // ANimacion del corazon
-$('.like-btn').on('click', function() {
-    $(this).toggleClass('like-active');
- });
+// $('.like-btn').on('click', function() {
+//     $(this).toggleClass('like-active');
+//  });
+
+
+// CArousel con OWL
+
+jQuery(document).ready(function(){
+    jQuery('.owl-carousel').owlCarousel({
+        margin: 10,
+        loop:true,
+        autoplay: true,
+        // Con este se pausa cuando pongo el curso sobre la foto
+        autoplayHoverPause: true,
+        responsive:{
+            0 :{
+                items:1
+            },
+            600:{
+              items:2  
+            },
+            1000:{
+                items:3
+            }
+        }
+
+    });
+});
